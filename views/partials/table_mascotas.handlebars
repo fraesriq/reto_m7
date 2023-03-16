@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>NOMBRE</th>
+    <th>PROPIETARIO</th>
+    <th>RUN</th>
+    <th></th>
+  </thead>
+  <tbody>
+    {{#each data}}    
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.nombre}}</td>
+      <td>{{this.propietario.nombre}}</td>
+      <td>{{this.propietario.run}}</td>
+      <td><a href="detalle_mascota/{{this.propietario.run}}">Mostrar Detalle</a></td>      
+      <td><a href="#" onclick="deleteMascota('{{this.nombre}}')">Eliminar</a></td>      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
