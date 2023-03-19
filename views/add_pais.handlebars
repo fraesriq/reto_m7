@@ -1,0 +1,64 @@
+{{!-- creamos el form --}}
+<div class="container">
+  <form id="formPais">
+
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre Pais</label>
+      <input type="text" class="form-control" name="nombre" id="nombre" required>
+    <div>
+
+    <div class="mb-3">
+      <label for="pib2019" class="form-label">PIB 2019</label>
+      <input type="number" class="form-control" name="pib2019" id="pib2019" required>
+    <div>
+
+    <div class="mb-3">
+      <label for="pib2020" class="form-label">PIB 2020</label>
+      <input type="number" class="form-control" name="pib2020" id="pib2020" required>
+    <div>
+    
+    <div class="m-3">
+      <button type="submit" class="btn btn-success">Ingresar</button>
+    </div>
+
+  </form>
+</div>
+
+
+<script>
+  
+  const formulario = document.querySelector('#formPais')
+
+  formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+    
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    let Pais = {
+      nombre: nombre.value,
+      pib_2019: pib2019.value,
+      pib_2020: pib2020.value      
+    }
+
+    fetch("/add/pais", {
+      method: "post",
+      headers,
+      body: JSON.stringify(Pais),
+      redirect: "follow"
+    }).then(response => response.json())
+      .then(data => {
+        if (data.code != 200) {
+          alert(data.message)
+        } else {
+          alert("Pais agregado correctamente.")
+          location.href = "/paises"
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+
+
+  })
+
+</script>

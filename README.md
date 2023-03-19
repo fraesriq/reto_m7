@@ -1,4 +1,4 @@
 Francisco Espindola Riquelme
 
-Evaluacion Modulo 6
-https://github.com/fraesriq/eval_m6
+Reto Modulo 7
+https://github.com/fraesriq/reto_m7.git

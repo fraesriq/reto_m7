@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-12 col-md-2">
+    <h1>Paises</h1>
+  </div>
+  <div class="col-sm-12 col-md-4" style="text-align: right;">
+    <a href="/paises/creciendo" class="btn btn-success">PIB CRECIENDO</a>
+    <a href="/paises/decreciendo" class="btn btn-warning">PIB DECRECIENDO</a>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <form id="frm_pib" action="/paises/pib" onsubmit="return false">
+      <button class="btn btn-warning" onclick="buscarPib()">PIB 2020 A LO MENOS</button>
+      <input type="number" id="pib" name="pib">
+    </form>
+  </div>
+</div>
+
+{{> table_paises}}
+
+<script>
+
+  let deletePais = (nombre) => {
+        
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    fetch("/delete/pais/"+nombre, {
+      method: "DELETE",
+      redirect: "follow"
+    }).then(response => response.json())
+      .then(data => {
+        console.log('Data: ',data)
+        if (data.code != 200) {
+          alert(data.message)
+        } else {          
+          alert(data.message);
+          location.href = "paises"
+        }
+      }).catch(error => {
+        console.log(error)
+      }) 
+  }
+
+  let buscarPib = () => {        
+    location.href = '/paises/pib/'+pib.value;
+  }
+
+</script>

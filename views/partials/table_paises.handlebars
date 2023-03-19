@@ -1,0 +1,19 @@
+<table class="table table-bordered table-sm">
+  <thead>
+    <th>Nombre</th>
+    <th>Pib 2019</th>
+    <th>Pib 2020</th>
+    <th></th>
+  </thead>
+  <tbody>
+    {{#each paises}} 
+    <tr>
+      <td>{{this.nombre}}</td>
+      <td>{{this.pib_2019}}</td>
+      <td>{{this.pib_2020}}</td>            
+      <td><a href="#" onclick="deletePais('{{this.nombre}}')">Eliminar</a></td>      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
